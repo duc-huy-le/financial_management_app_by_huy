@@ -1,0 +1,2565 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "S-ERP authentication service",
+    "version": "v6.4.0"
+  },
+  "paths": {
+    "/v1/account": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateProfileRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/password": {
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserChangePasswordModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/forgotpassword": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "type": "string",
+            "default": "vn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/recoverpassword": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserRecoverPasswordModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/jwt/info": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/info": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/jwt/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/jwt/info": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Gets login information.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/jwt/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "The user login.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The login model.",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Registers an user.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user register.",
+            "schema": {
+              "$ref": "#/definitions/RegisterModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserPasswordModelResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/users": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Gets all user in organization.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserInfoResponseModelResponseList"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/user": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Gets login information.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "put": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Updates user information.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The user update model.",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/user/password": {
+      "put": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Changes your password.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The change password model.",
+            "schema": {
+              "$ref": "#/definitions/UserChangePasswordModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/forgotpassword": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "The forgot password api.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "description": "The user email.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "description": "The language.",
+            "type": "string",
+            "default": "vn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/authentication/recoverpassword": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Validates the recover password token.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "token",
+            "description": "The recover password token.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "put": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Changes password.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserRecoverPasswordModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/fb/configuration": {
+      "get": {
+        "tags": [
+          "FirebaseIntegration"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FirebaseSettingsResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/fb/messaging/tokens": {
+      "get": {
+        "tags": [
+          "FirebaseIntegration"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserFirebaseTokenResponseList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "FirebaseIntegration"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserTokenResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserFirebaseTokenResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/google": {
+      "get": {
+        "tags": [
+          "GoogleAuth"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "returnUrl",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/login-google": {
+      "get": {
+        "tags": [
+          "GoogleAuth"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "error",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api-version",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/StringResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/google/link": {
+      "get": {
+        "tags": [
+          "GoogleAuth"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "returnUrl",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/StringResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/google/code": {
+      "post": {
+        "tags": [
+          "GoogleAuth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GoogleLoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/authentication/google/access_token": {
+      "post": {
+        "tags": [
+          "GoogleAuth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/GoogleLoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/health/check": {
+      "get": {
+        "tags": [
+          "HealthCheck"
+        ],
+        "summary": "The health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/health/dbcheck": {
+      "get": {
+        "tags": [
+          "HealthCheck"
+        ],
+        "summary": "The database health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/account/roles": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentAppId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/rights": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentAppId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/register/register": {
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RegisterModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserBaseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles-public": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleSimpleInfoResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles-public/all": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleSimpleInfoResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles-public/cache": {
+      "delete": {
+        "tags": [
+          "Roles"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/secure-login": {
+      "post": {
+        "tags": [
+          "RSAAuth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-navigations": {
+      "get": {
+        "tags": [
+          "UserNavigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "position"
+          },
+          {
+            "in": "query",
+            "name": "parentAppId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-navigations/cache": {
+      "delete": {
+        "tags": [
+          "UserNavigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users-public/all": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserSimpleInfoResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users-public/cache": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AccountResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rights": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApplicationModel"
+          }
+        },
+        "navigations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "settings": {
+          "$ref": "#/definitions/Settings"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "isSuperUser": {
+          "type": "boolean"
+        },
+        "token": {
+          "type": "string"
+        },
+        "fbToken": {
+          "type": "string"
+        },
+        "userProfile": {
+          "type": "string"
+        },
+        "userProfile2": {
+          "type": "string"
+        },
+        "userProfile3": {
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        }
+      }
+    },
+    "AccountResponseModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/AccountResponseModel"
+        }
+      }
+    },
+    "ApplicationModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "BooleanResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Code": {
+      "format": "int32",
+      "enum": [
+        200,
+        201,
+        202,
+        204,
+        400,
+        401,
+        403,
+        404,
+        405,
+        500,
+        501,
+        502,
+        503
+      ],
+      "type": "integer"
+    },
+    "FirebaseSettings": {
+      "type": "object",
+      "properties": {
+        "apiKey": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "messagingSenderId": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "FirebaseSettingsResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/FirebaseSettings"
+        }
+      }
+    },
+    "GoogleLoginRequestModel": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "accessToken": {
+          "type": "string"
+        },
+        "returnUrl": {
+          "type": "string"
+        },
+        "applicationCode": {
+          "type": "string"
+        }
+      }
+    },
+    "LabelsObj": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginRequestModel": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "applicationCode": {
+          "type": "string"
+        },
+        "rememberMe": {
+          "type": "boolean"
+        }
+      }
+    },
+    "MetaKeyValue": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetadataValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "fieldType": {
+          "$ref": "#/definitions/MetafieldType"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "fieldValues": {
+          "type": "string"
+        },
+        "fieldSelectionValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetaKeyValue"
+          }
+        },
+        "allowNulls": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetafieldType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        4,
+        15,
+        18,
+        20,
+        28,
+        29,
+        30,
+        41,
+        44,
+        49
+      ],
+      "type": "integer"
+    },
+    "NavigationModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "idPath": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "positionObj": {
+          "$ref": "#/definitions/PositionEnum"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentCode": {
+          "type": "string"
+        },
+        "urlRewrite": {
+          "type": "string"
+        },
+        "iconClass": {
+          "type": "string"
+        },
+        "subChild": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        },
+        "rightCodeObj": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "NavigationModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        }
+      }
+    },
+    "PositionEnum": {
+      "format": "int32",
+      "enum": [
+        0,
+        5,
+        9,
+        15,
+        27,
+        41,
+        57,
+        65,
+        75,
+        85
+      ],
+      "type": "integer"
+    },
+    "RegisterModel": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "birthdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "userProfile2": {
+          "$ref": "#/definitions/UserProfile2"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "ResponseUpdate": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResponseUpdateModel"
+        }
+      }
+    },
+    "ResponseUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RightModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "groupCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "RightModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        }
+      }
+    },
+    "RoleModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "type": "string"
+        }
+      }
+    },
+    "RoleModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleModel"
+          }
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleSimpleInfoResponseModel"
+          }
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleSimpleInfoResponseModel"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "sidebarColor": {
+          "type": "string"
+        },
+        "sidebarBackground": {
+          "type": "string"
+        }
+      }
+    },
+    "StringResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "string"
+        }
+      }
+    },
+    "UserBaseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserBaseModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserBaseModel"
+        }
+      }
+    },
+    "UserChangePasswordModel": {
+      "required": [
+        "confirmPassword",
+        "newPassword",
+        "oldPassword"
+      ],
+      "type": "object",
+      "properties": {
+        "oldPassword": {
+          "format": "password",
+          "type": "string"
+        },
+        "newPassword": {
+          "format": "password",
+          "maxLength": 100,
+          "minLength": 6,
+          "type": "string"
+        },
+        "confirmPassword": {
+          "format": "password",
+          "type": "string"
+        }
+      }
+    },
+    "UserDetail": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "gender": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "birthdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "aboutMe": {
+          "type": "string"
+        }
+      }
+    },
+    "UserFirebaseToken": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "messagingToken": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        }
+      }
+    },
+    "UserFirebaseTokenResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserFirebaseToken"
+          }
+        }
+      }
+    },
+    "UserFirebaseTokenResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserFirebaseToken"
+        }
+      }
+    },
+    "UserInfoResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        }
+      }
+    },
+    "UserInfoResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserInfoResponseModel"
+          }
+        }
+      }
+    },
+    "UserPasswordModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "isSuperUser": {
+          "type": "boolean"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "groupType": {
+          "type": "string"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "userProfile": {
+          "type": "string"
+        },
+        "userProfile2": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "passwordSalt": {
+          "type": "string"
+        }
+      }
+    },
+    "UserPasswordModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserPasswordModel"
+        }
+      }
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "customerType": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "taxNo": {
+          "type": "string"
+        },
+        "idNumber": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "headquarters": {
+          "type": "string"
+        },
+        "districts": {
+          "type": "string"
+        },
+        "wards": {
+          "type": "string"
+        }
+      }
+    },
+    "UserProfile2": {
+      "type": "object",
+      "properties": {
+        "orgId": {
+          "type": "string"
+        },
+        "orgCode": {
+          "type": "string"
+        },
+        "orgName": {
+          "type": "string"
+        }
+      }
+    },
+    "UserRecoverPasswordModel": {
+      "required": [
+        "confirmPassword",
+        "newPassword",
+        "token"
+      ],
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "newPassword": {
+          "format": "password",
+          "maxLength": 100,
+          "minLength": 6,
+          "type": "string"
+        },
+        "confirmPassword": {
+          "format": "password",
+          "type": "string"
+        }
+      }
+    },
+    "UserSimpleInfoResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserSimpleInfoResponseModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserSimpleInfoResponseModel"
+          }
+        }
+      }
+    },
+    "UserTokenResquestModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "UserTypeEnum": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        15,
+        27
+      ],
+      "type": "integer"
+    },
+    "UserUpdateProfileRequestModel": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        }
+      }
+    },
+    "UserUpdateRequestModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "type": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "listAddRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listAddRoleId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteRoleId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "userProfile2": {
+          "$ref": "#/definitions/UserProfile2"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization: \"Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

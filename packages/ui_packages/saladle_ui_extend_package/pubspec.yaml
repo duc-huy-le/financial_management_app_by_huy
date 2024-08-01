@@ -1,0 +1,45 @@
+name: saladle_ui_extend_package
+description: Extend ui package
+homepage: https://s-erp.vn
+# publish_to: 'https://pub.dev' # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
+version: 1.0.0
+versionCode: 1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  saladle_ui_package:
+    path: ../saladle_ui_package
+    # Base Dependencies
+  get: ^4.6.5
+  cupertino_icons: ^1.0.4
+  provider: ^6.0.2
+  shared_preferences: ^2.0.15
+  google_fonts: ^3.0.0
+  # Icons
+  material_design_icons_flutter: ^5.0.6595
+  flutter_feather_icons: ^2.0.0+1
+  # Loading
+  shimmer: ^2.0.0
+  intl: ^0.17.0
+  connectivity_plus: ^2.3.0
+
+  dio: ^4.0.6
+  open_file: ^3.2.1
+  path_provider: ^2.0.10
+  focused_menu: ^1.0.5
+  flutter_html: ^3.0.0-alpha.3
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+flutter:
+  module:
+    androidPackage: com.serpapp.core_packages
+    androidX: true
+    iosBundleIdentifier: com.serpapp.core_packages
+  uses-material-design: true

@@ -1,0 +1,7213 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "S-ERP user service",
+    "version": "v6.3.0"
+  },
+  "paths": {
+    "/api/v1/wso2/authenticationinfo": {
+      "get": {
+        "tags": [
+          "AdminWso"
+        ],
+        "summary": "API lấy về các thông tin xác thực lấy từ Identity Server theo Authentication Code",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "authorizationCode",
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "schema": {
+              "$ref": "#/definitions/Wso2ResultResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wso2/refreshtoken": {
+      "get": {
+        "tags": [
+          "AdminWso"
+        ],
+        "summary": "API làm mới access token dựa vào refresh token",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "token",
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "schema": {
+              "$ref": "#/definitions/Wso2ResultResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/wso2/get-user-info": {
+      "get": {
+        "tags": [
+          "AdminWso"
+        ],
+        "summary": "API lấy claim user dựa vào access token",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "token",
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "schema": {
+              "$ref": "#/definitions/Wso2UserInfoResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/setup": {
+      "post": {
+        "tags": [
+          "HanoiTaxApplication"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApplicationCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/reset-admin-pass": {
+      "post": {
+        "tags": [
+          "HanoiTaxApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "code",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/setup-navigation": {
+      "post": {
+        "tags": [
+          "HanoiTaxApplication"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApplicationCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/setup-roles": {
+      "post": {
+        "tags": [
+          "HanoiTaxApplication"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApplicationCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/health/check": {
+      "get": {
+        "tags": [
+          "HealthCheck"
+        ],
+        "summary": "The health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/health/dbcheck": {
+      "get": {
+        "tags": [
+          "HealthCheck"
+        ],
+        "summary": "The database health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/rights": {
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightModelResponsePagination"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "rightIds",
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/{id}": {
+      "delete": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/all": {
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/all-tree": {
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightGroupModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/{rightId}/detail": {
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rightId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightDetailModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/{rightId}/roles": {
+      "get": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rightId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "IdmRight"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rightId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "roleIds",
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rightId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/rights/cache": {
+      "delete": {
+        "tags": [
+          "IdmRight"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations": {
+      "get": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NavigationCreateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{id}": {
+      "get": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/NavigationUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{code}/is-code-exist": {
+      "get": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "navigationId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{urlRewrite}/is-url-rewrite-exist": {
+      "get": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "urlRewrite",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "navigationId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/create-many": {
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NavigationCreateRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{id}/rights": {
+      "get": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/StringResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/bycode/{code}": {
+      "delete": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/delete-many": {
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/delete-many/bycode": {
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/cache": {
+      "delete": {
+        "tags": [
+          "Navigation"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/right-map-role": {
+      "get": {
+        "tags": [
+          "RightMapRole"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "RightMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RightMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RightMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RightMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/right-map-role/delete-many": {
+      "post": {
+        "tags": [
+          "RightMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RightMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoleCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{id}": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoleUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/all": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{id}/detail": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleDetailModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/bycode/{code}": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseUserModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/bycode/{code}/detail": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleDetailModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/bycode/{code}/users": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseUserModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{id}/rights": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SimpleRightModelListResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleDetailModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{roleId}/rights": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "rightIds",
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{id}/users": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserBaseModelListResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{roleId}/users": {
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdateMulti"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdateMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{roleCode}/IsAvailable": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "roleId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/cache": {
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/{roleId}/navigations": {
+      "get": {
+        "tags": [
+          "RoleNavigations"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{navigationId}/roles": {
+      "get": {
+        "tags": [
+          "RoleNavigations"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "navigationId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/roles/info": {
+      "get": {
+        "tags": [
+          "RolesPublicInfo"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleSimpleInfoResponseModelResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/seeddata/rights": {
+      "post": {
+        "tags": [
+          "SeedData"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/seeddata/roles": {
+      "post": {
+        "tags": [
+          "SeedData"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/seeddata/navigations": {
+      "post": {
+        "tags": [
+          "SeedData"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "module",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/seeddata/users": {
+      "post": {
+        "tags": [
+          "SeedData"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          }
+        }
+      }
+    },
+    "/v1/signing": {
+      "get": {
+        "tags": [
+          "Signing"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdateMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/status/email/check": {
+      "post": {
+        "tags": [
+          "StatusCheck"
+        ],
+        "summary": "The email sending check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/applications": {
+      "post": {
+        "tags": [
+          "SysApplication"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApplicationCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/{id}": {
+      "put": {
+        "tags": [
+          "SysApplication"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ApplicationUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/delete-many": {
+      "post": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "listId",
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/{id}/children": {
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/filter": {
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponsePagination"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/applications/{code}/verify-code": {
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/{id}/verify/{code}": {
+      "get": {
+        "tags": [
+          "SysApplication"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-app": {
+      "get": {
+        "tags": [
+          "UserApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsersByApplicationResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/applications": {
+      "get": {
+        "tags": [
+          "UserApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ApplicationModelResponseList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserApp"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GuidListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/applications/{appId}/users": {
+      "get": {
+        "tags": [
+          "UserApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserApp"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "appId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-manage-app": {
+      "get": {
+        "tags": [
+          "UserManageApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsersByApplicationResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-manage-app/{userId}": {
+      "get": {
+        "tags": [
+          "UserManageApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SystemApplicationResponseList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserManageApp"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SystemApplicationResponseList"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserManageApp"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GuidListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-map-role": {
+      "get": {
+        "tags": [
+          "UserMapRole"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-map-role/delete-many": {
+      "post": {
+        "tags": [
+          "UserMapRole"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserMapRoleRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserMapRoleResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/roles": {
+      "get": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelListResponseObject"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/roles/include-by-parent-app": {
+      "get": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RoleModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/roles/{roleId}": {
+      "delete": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/roles/delete-many": {
+      "post": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/rights": {
+      "get": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RightModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/detail": {
+      "get": {
+        "tags": [
+          "UserPermissions"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserRoleDetailModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/info": {
+      "get": {
+        "tags": [
+          "UserPublicInfo"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "userTypes",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/UserTypeEnum"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserSimpleInfoResponseModelResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/info/{id}": {
+      "get": {
+        "tags": [
+          "UserPublicInfo"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserSimpleInfoResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/info/{username}/is-available": {
+      "get": {
+        "tags": [
+          "UserPublicInfo"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/info/{email}/email-is-available": {
+      "get": {
+        "tags": [
+          "UserPublicInfo"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userTypes",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/UserTypeEnum"
+            }
+          },
+          {
+            "in": "query",
+            "name": "isActive",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserResponseModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sendEmail",
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "type": "string",
+            "default": "vn"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseUserModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "listIds",
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/all": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "applicationId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/password": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserChangePasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "type": "string",
+            "default": "vn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/password/send-email-recover": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "type": "string",
+            "default": "vn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/password/send-email": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "type": "string",
+            "default": "vn"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/changepassword": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "oldPassword",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "password",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/users/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/UserPatchUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserPasswordModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{username}/IsAvailable": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/users/{email}/EmailIsAvailable": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/users/alluser": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserPasswordModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/alluser-include-parent-application": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserPasswordModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/byid/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserPasswordModelListResponseObject"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/users/{id}/lock": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{id}/force-password-change": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseUpdate"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/cache": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{userId}/navigations": {
+      "get": {
+        "tags": [
+          "UsersNavigations"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NavigationModelIListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/navigations/{navigationId}/users": {
+      "get": {
+        "tags": [
+          "UsersNavigations"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "navigationId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseUserModelResponseList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApplicationCreateModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "templateApp": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApplicationModel"
+          }
+        }
+      }
+    },
+    "ApplicationModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApplicationModel"
+          }
+        }
+      }
+    },
+    "ApplicationModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ApplicationModel"
+        }
+      }
+    },
+    "ApplicationModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ApplicationModelPagination"
+        }
+      }
+    },
+    "ApplicationUpdateModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "BaseNavigationModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "idPath": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "positionObj": {
+          "$ref": "#/definitions/PositionEnum"
+        }
+      }
+    },
+    "BaseRightModelOfUser": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "enable": {
+          "type": "boolean"
+        },
+        "inherited": {
+          "type": "boolean"
+        },
+        "inheritedFromRoles": {
+          "type": "string"
+        },
+        "listRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseRoleModel"
+          }
+        },
+        "listRoleId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BaseRoleModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "BaseUserModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "isSuperUser": {
+          "type": "boolean"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "groupType": {
+          "type": "string"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "userProfile": {
+          "type": "string"
+        },
+        "userProfile2": {
+          "type": "string"
+        }
+      }
+    },
+    "BaseUserModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseUserModel"
+          }
+        }
+      }
+    },
+    "BaseUserModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseUserModel"
+          }
+        }
+      }
+    },
+    "BaseUserModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/BaseUserModel"
+        }
+      }
+    },
+    "BooleanResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Code": {
+      "format": "int32",
+      "enum": [
+        200,
+        201,
+        202,
+        204,
+        400,
+        401,
+        403,
+        404,
+        405,
+        500,
+        501,
+        502,
+        503
+      ],
+      "type": "integer"
+    },
+    "GuidListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "LabelsObj": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "MetaKeyValue": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetadataValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "fieldType": {
+          "$ref": "#/definitions/MetafieldType"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "fieldValues": {
+          "type": "string"
+        },
+        "fieldSelectionValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetaKeyValue"
+          }
+        },
+        "allowNulls": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetafieldType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        4,
+        15,
+        18,
+        20,
+        28,
+        29,
+        30,
+        41,
+        44,
+        49
+      ],
+      "type": "integer"
+    },
+    "NavigationCreateRequestModel": {
+      "type": "object",
+      "properties": {
+        "parentCode": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "urlRewrite": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "iconClass": {
+          "type": "string"
+        },
+        "positionObj": {
+          "$ref": "#/definitions/PositionEnum"
+        },
+        "rightCodeObj": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "NavigationModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "idPath": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "positionObj": {
+          "$ref": "#/definitions/PositionEnum"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentCode": {
+          "type": "string"
+        },
+        "urlRewrite": {
+          "type": "string"
+        },
+        "iconClass": {
+          "type": "string"
+        },
+        "subChild": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        },
+        "rightCodeObj": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "NavigationModelIListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        }
+      }
+    },
+    "NavigationModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        }
+      }
+    },
+    "NavigationModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationModel"
+          }
+        }
+      }
+    },
+    "NavigationModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/NavigationModel"
+        }
+      }
+    },
+    "NavigationModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/NavigationModelPagination"
+        }
+      }
+    },
+    "NavigationUpdateRequestModel": {
+      "type": "object",
+      "properties": {
+        "parentCode": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "urlRewrite": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "iconClass": {
+          "type": "string"
+        },
+        "positionObj": {
+          "$ref": "#/definitions/PositionEnum"
+        },
+        "rightCodeObj": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentModel": {
+          "$ref": "#/definitions/BaseNavigationModel"
+        },
+        "fromSubNavigation": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "subUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "PositionEnum": {
+      "format": "int32",
+      "enum": [
+        0,
+        5,
+        9,
+        15,
+        27,
+        41,
+        57,
+        65,
+        75,
+        85
+      ],
+      "type": "integer"
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "ResponseDelete": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResponseDeleteModel"
+        }
+      }
+    },
+    "ResponseDeleteModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseDeleteMulti": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseDeleteModel"
+          }
+        }
+      }
+    },
+    "ResponseUpdate": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResponseUpdateModel"
+        }
+      }
+    },
+    "ResponseUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseUpdateMulti": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseUpdateModel"
+          }
+        }
+      }
+    },
+    "RightDetailModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "groupCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "listUser": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseUserModel"
+          }
+        },
+        "listRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseRoleModel"
+          }
+        }
+      }
+    },
+    "RightDetailModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightDetailModel"
+          }
+        }
+      }
+    },
+    "RightGroupModel": {
+      "type": "object",
+      "properties": {
+        "groupCode": {
+          "type": "string"
+        },
+        "rights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        }
+      }
+    },
+    "RightGroupModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightGroupModel"
+          }
+        }
+      }
+    },
+    "RightMapRoleRequestModel": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "rightId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "RightMapRoleResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "roleId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "rightId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "RightMapRoleResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightMapRoleResponseModel"
+          }
+        }
+      }
+    },
+    "RightModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "groupCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "RightModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        }
+      }
+    },
+    "RightModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        }
+      }
+    },
+    "RightModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        }
+      }
+    },
+    "RightModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RightModel"
+        }
+      }
+    },
+    "RightModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RightModelPagination"
+        }
+      }
+    },
+    "RoleCreateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "type": "string"
+        },
+        "listAddRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listAddUserId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RoleDetailModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "type": "string"
+        },
+        "listRights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        },
+        "listUser": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseUserModel"
+          }
+        }
+      }
+    },
+    "RoleDetailModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleDetailModel"
+          }
+        }
+      }
+    },
+    "RoleDetailModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleDetailModel"
+        }
+      }
+    },
+    "RoleModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "type": "string"
+        }
+      }
+    },
+    "RoleModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleModel"
+          }
+        }
+      }
+    },
+    "RoleModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleModel"
+          }
+        }
+      }
+    },
+    "RoleModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleModel"
+          }
+        }
+      }
+    },
+    "RoleModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleModel"
+        }
+      }
+    },
+    "RoleModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleModelPagination"
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleSimpleInfoResponseModel"
+          }
+        }
+      }
+    },
+    "RoleSimpleInfoResponseModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/RoleSimpleInfoResponseModelPagination"
+        }
+      }
+    },
+    "RoleUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "autoAssignment": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "type": "string"
+        },
+        "listAddRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listAddUserId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteUserId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "sidebarColor": {
+          "type": "string"
+        },
+        "sidebarBackground": {
+          "type": "string"
+        }
+      }
+    },
+    "SimpleRightModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "groupCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "isSystem": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SimpleRightModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleRightModel"
+          }
+        }
+      }
+    },
+    "StringResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SystemApplication": {
+      "required": [
+        "code",
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 64,
+          "minLength": 0,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "minLength": 0,
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 1024,
+          "minLength": 0,
+          "type": "string"
+        },
+        "demo": {
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "c_left": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_right": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_level": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SystemApplicationResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SystemApplication"
+          }
+        }
+      }
+    },
+    "UserBaseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserBaseModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserBaseModel"
+          }
+        }
+      }
+    },
+    "UserChangePasswordRequest": {
+      "type": "object",
+      "properties": {
+        "newPassword": {
+          "type": "string"
+        },
+        "confirmPassword": {
+          "type": "string"
+        }
+      }
+    },
+    "UserCreateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "groupType": {
+          "type": "string"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "listRoleIds": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "userProfile2": {
+          "$ref": "#/definitions/UserProfile2"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        }
+      }
+    },
+    "UserDetail": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "gender": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "birthdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "aboutMe": {
+          "type": "string"
+        }
+      }
+    },
+    "UserMapRoleRequestModel": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserMapRoleResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "roleId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserMapRoleResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserMapRoleResponseModel"
+          }
+        }
+      }
+    },
+    "UserModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        }
+      }
+    },
+    "UserPasswordModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "isSuperUser": {
+          "type": "boolean"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "groupType": {
+          "type": "string"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "userProfile": {
+          "type": "string"
+        },
+        "userProfile2": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "passwordSalt": {
+          "type": "string"
+        }
+      }
+    },
+    "UserPasswordModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserPasswordModel"
+          }
+        }
+      }
+    },
+    "UserPasswordModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserPasswordModel"
+        }
+      }
+    },
+    "UserPatchUpdateRequestModel": {
+      "type": "object",
+      "properties": {
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        }
+      }
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "customerType": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "taxNo": {
+          "type": "string"
+        },
+        "idNumber": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "headquarters": {
+          "type": "string"
+        },
+        "districts": {
+          "type": "string"
+        },
+        "wards": {
+          "type": "string"
+        }
+      }
+    },
+    "UserProfile2": {
+      "type": "object",
+      "properties": {
+        "orgId": {
+          "type": "string"
+        },
+        "orgCode": {
+          "type": "string"
+        },
+        "orgName": {
+          "type": "string"
+        }
+      }
+    },
+    "UserResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "groupName": {
+          "type": "string"
+        }
+      }
+    },
+    "UserResponseModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserResponseModel"
+          }
+        }
+      }
+    },
+    "UserResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserResponseModel"
+          }
+        }
+      }
+    },
+    "UserResponseModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserResponseModelPagination"
+        }
+      }
+    },
+    "UserRoleDetailModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "isSuperUser": {
+          "type": "boolean"
+        },
+        "forceChangePassword": {
+          "type": "boolean"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "lastActivityDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "groupType": {
+          "type": "string"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "userProfile": {
+          "type": "string"
+        },
+        "userProfile2": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "passwordSalt": {
+          "type": "string"
+        },
+        "rights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RightModel"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleModel"
+          }
+        },
+        "listRight": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseRightModelOfUser"
+          }
+        },
+        "listRole": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseRoleModel"
+          }
+        }
+      }
+    },
+    "UserRoleDetailModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserRoleDetailModel"
+        }
+      }
+    },
+    "UserSimpleInfoResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "UserSimpleInfoResponseModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserSimpleInfoResponseModel"
+          }
+        }
+      }
+    },
+    "UserSimpleInfoResponseModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserSimpleInfoResponseModel"
+        }
+      }
+    },
+    "UserSimpleInfoResponseModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/UserSimpleInfoResponseModelPagination"
+        }
+      }
+    },
+    "UserTypeEnum": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        15,
+        27
+      ],
+      "type": "integer"
+    },
+    "UserUpdateRequestModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "typeObj": {
+          "$ref": "#/definitions/UserTypeEnum"
+        },
+        "type": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userDetail": {
+          "$ref": "#/definitions/UserDetail"
+        },
+        "settingValues": {
+          "$ref": "#/definitions/Settings"
+        },
+        "groupId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "listAddRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listAddRoleId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteRightId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "listDeleteRoleId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "userProfile": {
+          "$ref": "#/definitions/UserProfile"
+        },
+        "userProfile2": {
+          "$ref": "#/definitions/UserProfile2"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        }
+      }
+    },
+    "UsersByApplicationResponseModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "listUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserModel"
+          }
+        }
+      }
+    },
+    "UsersByApplicationResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsersByApplicationResponseModel"
+          }
+        }
+      }
+    },
+    "Wso2Result": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "id_token": {
+          "type": "string"
+        },
+        "expires_in": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "expires_time": {
+          "type": "string"
+        },
+        "token_type": {
+          "type": "string"
+        },
+        "userInfo": {
+          "$ref": "#/definitions/Wso2UserInfo"
+        }
+      }
+    },
+    "Wso2ResultResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/Wso2Result"
+        }
+      }
+    },
+    "Wso2UserInfo": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "Wso2UserInfoResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/Wso2UserInfo"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization: \"Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

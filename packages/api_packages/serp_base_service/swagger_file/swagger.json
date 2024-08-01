@@ -1,0 +1,6687 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "S-ERP base service",
+    "version": "v3.2.1"
+  },
+  "paths": {
+    "/v1/category": {
+      "get": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "parentId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "parentAppId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "recursive",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "statusObj"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryViewModelResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}": {
+      "get": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "parentId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "parentAppId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "recursive",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "statusObj"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryViewModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CategoryRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}/tree": {
+      "get": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}/{id}": {
+      "get": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CategoryRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryViewModelResponseObject"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CategoryPatchRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDelete"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}/reorder": {
+      "put": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CategoryOrderModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BaseCategoryViewModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}/delete/many": {
+      "post": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResponseDeleteMulti"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/{type}/{alias}/is-available": {
+      "get": {
+        "tags": [
+          "BaseCategory"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "alias",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/category/download-validate-file": {
+      "post": {
+        "tags": [
+          "BaseCategoryActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/category/validate-excel": {
+      "post": {
+        "tags": [
+          "BaseCategoryActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/category/import-file": {
+      "post": {
+        "tags": [
+          "BaseCategoryActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/calendar/events/attendee/{attendeeId}": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "attendeeId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/events/{id}": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/EventResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/events/getall": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/events/owner/{ownerId}": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ownerId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/events": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelListResponseObject"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/EventResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/events/users": {
+      "post": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ListOfUserRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EventResponseModelListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/busyusers/{id}": {
+      "post": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ListOfUserRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GuidListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/busyusers/{userId}": {
+      "get": {
+        "tags": [
+          "Calendar"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "currentEventId",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GuidListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/calendar/suggestiontime": {
+      "post": {
+        "tags": [
+          "Calendar"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "start",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ListOfUserRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DateTimeListResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/feedback/{id}": {
+      "get": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Gets a feedback.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The feedback id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FeedbackResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Updates a feedback.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The feedback id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The feedback request model.",
+            "schema": {
+              "$ref": "#/definitions/FeedbackRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FeedbackResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Deletes a feedback.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The feedback id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FeedbackResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/feedback": {
+      "get": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Gets all feedbacks.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "feedbackType",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "objectId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "fromDate",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "toDate",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "queryString",
+            "type": "string",
+            "default": "{ }"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FeedbackResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Creates a feedback.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The feedback request model",
+            "schema": {
+              "$ref": "#/definitions/FeedbackRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/FeedbackResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/feedback/delete/many": {
+      "post": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Deletes many feedbacks.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The list of feedback ids.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/health/check": {
+      "get": {
+        "tags": [
+          "HealthCheck"
+        ],
+        "summary": "The health check api.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api-version",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/organization/filter": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Gets filter organization.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort field.",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "queryString",
+            "description": "The query string.",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponsePagination"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/organization": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Gets all organizations.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentCode",
+            "description": "The parent organization code.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort field.",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "queryString",
+            "description": "The query string.",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Creates an organization.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The organization request model",
+            "schema": {
+              "$ref": "#/definitions/OrganizationRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization/bypermission": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Gets all organizations by permission.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentCode",
+            "description": "The parent organization code.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort field.",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "queryString",
+            "description": "The query string.",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization/{id}": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Gets an organization.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The organization id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Updates an organization.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The organization id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The organization request model.",
+            "schema": {
+              "$ref": "#/definitions/OrganizationRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Deletes an organization.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The organization id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization/bycode/{code}": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Gets an organization.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "description": "The organization code.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OrganizationResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/organization/delete/many": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Deletes many organizations.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The list of organization ids.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-contact": {
+      "get": {
+        "tags": [
+          "ResContact"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "reference",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ResContact"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResContactUpdateResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-contact/{id}": {
+      "get": {
+        "tags": [
+          "ResContact"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ResContact"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResContactUpdateResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ResContact"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResContactPatchUpdateResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ResContact"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-contact/many": {
+      "patch": {
+        "tags": [
+          "ResContact"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ResContactPatchUpdateResquestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-contact/delete/many": {
+      "post": {
+        "tags": [
+          "ResContact"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResContactResponseModelResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-customer-group/filter": {
+      "get": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Gets filter customer group.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentId",
+            "description": "The parent id.",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort field.",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The query string.",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponsePagination"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/res-customer-group/{id}": {
+      "get": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Gets a customer group.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The customer group id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Updates a customer group.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The customer group id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The customer group request model.",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Deletes a customer group.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The customer group id.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-customer-group": {
+      "get": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Gets all customer groups.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentId",
+            "description": "The parent id.",
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "The sort field.",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The query string.",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Creates a customer group.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The customer group request model",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResCustomerGroupResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-customer-group/delete/many": {
+      "post": {
+        "tags": [
+          "ResCustomerGroup"
+        ],
+        "summary": "Deletes many customer group.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The list of customer group ids.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/filter": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponsePagination"
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/res-partner": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "isSmallStreet",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "type": "integer",
+            "format": "int32",
+            "default": 20
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "type": "string",
+            "default": "{ }"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerViewModelResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ResPartner"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/bycode/{code}": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/byuserid/{userid}": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userid",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/{id}": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ResPartner"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ResPartner"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerPatchResquestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/delete/many": {
+      "post": {
+        "tags": [
+          "ResPartner"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/{code}/is-available": {
+      "get": {
+        "tags": [
+          "ResPartner"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "alias",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BooleanResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/download-validate-file": {
+      "post": {
+        "tags": [
+          "ResPartnerActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/res-partner/import-file": {
+      "post": {
+        "tags": [
+          "ResPartnerActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ResPartnerResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/res-partner/validate-excel": {
+      "post": {
+        "tags": [
+          "ResPartnerActions"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "File",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "Type",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ACLItem": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "objectType": {
+          "$ref": "#/definitions/ObjectType"
+        },
+        "accessType": {
+          "$ref": "#/definitions/AccessType"
+        }
+      }
+    },
+    "ACLObject": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string"
+        },
+        "aclItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ACLItem"
+          }
+        }
+      }
+    },
+    "AccessType": {
+      "format": "int32",
+      "enum": [
+        1,
+        3,
+        7,
+        15,
+        31,
+        127
+      ],
+      "type": "integer"
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "countryCode": {
+          "maxLength": 5,
+          "minLength": 0,
+          "type": "string"
+        },
+        "countryName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "province": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "provinceName": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "district": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "districtName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "ward": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "wardName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "zip": {
+          "maxLength": 20,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "BaseCategory": {
+      "required": [
+        "alias",
+        "displayName",
+        "name",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentPath": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        },
+        "displayName": {
+          "maxLength": 400,
+          "minLength": 0,
+          "type": "string"
+        },
+        "type": {
+          "maxLength": 30,
+          "minLength": 0,
+          "type": "string"
+        },
+        "alias": {
+          "maxLength": 255,
+          "minLength": 0,
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "statusObj": {
+          "$ref": "#/definitions/StatusEnums"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "c_left": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_right": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "aclObject": {
+          "$ref": "#/definitions/ACLObject"
+        },
+        "acl": {
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "labelsJson": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BaseCategoryPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseCategory"
+          }
+        }
+      }
+    },
+    "BaseCategoryResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/BaseCategory"
+        }
+      }
+    },
+    "BaseCategoryResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/BaseCategoryPagination"
+        }
+      }
+    },
+    "BaseCategoryViewModel": {
+      "required": [
+        "alias",
+        "name",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "categoryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentPath": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "displayName": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "type": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "alias": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "parent": {
+          "$ref": "#/definitions/BaseCategoryViewModel"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseCategoryViewModel"
+          }
+        }
+      }
+    },
+    "BaseCategoryViewModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseCategoryViewModel"
+          }
+        }
+      }
+    },
+    "BaseCategoryViewModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/BaseCategoryViewModel"
+        }
+      }
+    },
+    "BaseCategoryViewModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/BaseCategoryViewModelPagination"
+        }
+      }
+    },
+    "BooleanResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CategoryOrderModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CategoryPatchRequestModel": {
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "displayName": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "type": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "alias": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "statusObj": {
+          "$ref": "#/definitions/StatusEnums"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        }
+      }
+    },
+    "CategoryRequestModel": {
+      "required": [
+        "alias",
+        "name",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "displayName": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "type": {
+          "maxLength": 30,
+          "type": "string"
+        },
+        "alias": {
+          "maxLength": 255,
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "statusObj": {
+          "$ref": "#/definitions/StatusEnums"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Code": {
+      "format": "int32",
+      "enum": [
+        200,
+        201,
+        202,
+        204,
+        400,
+        401,
+        403,
+        404,
+        405,
+        500,
+        501,
+        502,
+        503
+      ],
+      "type": "integer"
+    },
+    "CustomRecurrenceModel": {
+      "type": "object",
+      "properties": {
+        "repeatType": {
+          "type": "string"
+        },
+        "numberOfOccurrences": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "repeateOnOfWeek": {
+          "type": "string"
+        },
+        "repeateOnOfMonthType": {
+          "type": "string"
+        },
+        "repeateOnOfMonthByDay": {
+          "type": "string"
+        },
+        "repeateOnOfMonthByDate": {
+          "type": "string"
+        },
+        "repeateOnOfYear": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "repeateEndType": {
+          "type": "string"
+        },
+        "valueOfRepeatTypeOn": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "valueOfRepeatTypeAfter": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "DateTimeListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "format": "date-time",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "eventDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "EventAttendee": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "userFullname": {
+          "type": "string"
+        },
+        "userOtherInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "EventDetails": {
+      "type": "object",
+      "properties": {
+        "eventType": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "EventHistory": {
+      "type": "object",
+      "properties": {
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedUser": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "string"
+        }
+      }
+    },
+    "EventResponseModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectName": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "objectInfo": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "startTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ownerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "attendees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "guest": {
+          "type": "string"
+        },
+        "eventDetails": {
+          "$ref": "#/definitions/EventDetails"
+        },
+        "rrule": {
+          "type": "string"
+        },
+        "customRecurrence": {
+          "$ref": "#/definitions/CustomRecurrenceModel"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "eventHistories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventHistory"
+          }
+        }
+      }
+    },
+    "EventResponseModelListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventResponseModel"
+          }
+        }
+      }
+    },
+    "EventResponseModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/EventResponseModel"
+        }
+      }
+    },
+    "EventResquestModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectName": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "objectInfo": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 400,
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "startTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ownerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "attendees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "guest": {
+          "type": "string"
+        },
+        "eventDetails": {
+          "$ref": "#/definitions/EventDetails"
+        },
+        "rrule": {
+          "type": "string"
+        },
+        "customRecurrence": {
+          "$ref": "#/definitions/CustomRecurrenceModel"
+        }
+      }
+    },
+    "Feedback": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "feedbackName": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "feedbackType": {
+          "maxLength": 10,
+          "type": "string"
+        },
+        "objectId": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "objectCode": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "objectIds": {
+          "type": "string"
+        },
+        "category": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "userFullname": {
+          "maxLength": 20,
+          "minLength": 0,
+          "type": "string"
+        },
+        "username": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        }
+      }
+    },
+    "FeedbackPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Feedback"
+          }
+        }
+      }
+    },
+    "FeedbackRequestModel": {
+      "description": "The feedback request model.",
+      "type": "object",
+      "properties": {
+        "feedbackName": {
+          "description": "The feedback name.",
+          "maxLength": 50,
+          "type": "string"
+        },
+        "feedbackType": {
+          "description": "The feedback type.",
+          "maxLength": 10,
+          "type": "string"
+        },
+        "objectId": {
+          "description": "The parent object id.",
+          "type": "string"
+        },
+        "objectCode": {
+          "description": "The parent object code.",
+          "type": "string"
+        },
+        "objectIds": {
+          "description": "The parent object ids.",
+          "type": "string"
+        },
+        "category": {
+          "description": "The category.",
+          "maxLength": 50,
+          "type": "string"
+        },
+        "subject": {
+          "description": "The subject.",
+          "type": "string"
+        },
+        "content": {
+          "description": "The content.",
+          "type": "string"
+        },
+        "status": {
+          "format": "int32",
+          "description": "The status.",
+          "type": "integer"
+        },
+        "metadata": {
+          "description": "The metadata content.",
+          "type": "string"
+        }
+      }
+    },
+    "FeedbackResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/Feedback"
+        }
+      }
+    },
+    "FeedbackResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/FeedbackPagination"
+        }
+      }
+    },
+    "GuidListResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "LabelsObj": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "objectName": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "ListOfUserRequestModel": {
+      "type": "object",
+      "properties": {
+        "listOfUserIds": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MetaKeyValue": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetadataValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "fieldType": {
+          "$ref": "#/definitions/MetafieldType"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "fieldValues": {
+          "type": "string"
+        },
+        "fieldSelectionValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetaKeyValue"
+          }
+        },
+        "allowNulls": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "MetafieldType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        4,
+        15,
+        18,
+        20,
+        28,
+        29,
+        30,
+        41,
+        44,
+        49
+      ],
+      "type": "integer"
+    },
+    "ObjectType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "Org": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "startTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Organization": {
+      "required": [
+        "code",
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "organizationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentOrganization": {
+          "$ref": "#/definitions/Organization"
+        },
+        "code": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 1024,
+          "minLength": 0,
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "address": {
+          "maxLength": 1024,
+          "minLength": 0,
+          "type": "string"
+        },
+        "phoneNumber": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fax": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "email": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "loai": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idPath": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "hasChild": {
+          "type": "boolean"
+        },
+        "active": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "accountingAppId": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "OrganizationPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Organization"
+          }
+        }
+      }
+    },
+    "OrganizationRequestModel": {
+      "description": "The organization request model.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "The organization id.",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "description": "The organization parent id.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The organization name.",
+          "type": "string"
+        },
+        "code": {
+          "description": "The organization code.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The organization description.",
+          "type": "string"
+        },
+        "type": {
+          "description": "The organization type.",
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "description": "The organization order.",
+          "type": "integer"
+        },
+        "address": {
+          "description": "The organization address.",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "The organization phone number.",
+          "type": "string"
+        },
+        "fax": {
+          "description": "The organization fax.",
+          "type": "string"
+        },
+        "email": {
+          "description": "The organization email.",
+          "type": "string"
+        },
+        "loai": {
+          "format": "int32",
+          "description": "The organization loai.",
+          "type": "integer"
+        },
+        "idPath": {
+          "description": "The organization id path.",
+          "type": "string"
+        },
+        "path": {
+          "description": "The organization path.",
+          "type": "string"
+        },
+        "level": {
+          "format": "int32",
+          "description": "The organization level.",
+          "type": "integer"
+        },
+        "hasChild": {
+          "description": "The organization has child.",
+          "type": "boolean"
+        },
+        "active": {
+          "format": "int32",
+          "description": "The organization active.",
+          "type": "integer"
+        }
+      }
+    },
+    "OrganizationResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/Organization"
+        }
+      }
+    },
+    "OrganizationResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/OrganizationPagination"
+        }
+      }
+    },
+    "Phone": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "ResContact": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "refsObject": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "refs": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fullname": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "birthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "eventsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "events": {
+          "type": "string"
+        },
+        "telephonesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "telephones": {
+          "type": "string"
+        },
+        "addressesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "addresses": {
+          "type": "string"
+        },
+        "organizationsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Org"
+          }
+        },
+        "organizations": {
+          "type": "string"
+        },
+        "emailObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Email"
+          }
+        },
+        "emails": {
+          "type": "string"
+        },
+        "websiteObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Website"
+          }
+        },
+        "websites": {
+          "type": "string"
+        },
+        "notes": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "labelsJson": {
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "isShared": {
+          "type": "boolean"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ResContactPatchUpdateResquestModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fullname": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "birthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "eventsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "organizationsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Org"
+          }
+        },
+        "addressesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "telephonesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "emailObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Email"
+          }
+        },
+        "websiteObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Website"
+          }
+        },
+        "notes": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "isShared": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "refsObject": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ResContactResponseModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fullname": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "birthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "eventsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "organizationsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Org"
+          }
+        },
+        "addressesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "telephonesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "emailObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Email"
+          }
+        },
+        "websiteObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Website"
+          }
+        },
+        "notes": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "isShared": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "refsObject": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResContactResponseModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResContactResponseModel"
+          }
+        }
+      }
+    },
+    "ResContactResponseModelResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResContactResponseModel"
+          }
+        }
+      }
+    },
+    "ResContactResponseModelResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResContactResponseModel"
+        }
+      }
+    },
+    "ResContactResponseModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResContactResponseModelPagination"
+        }
+      }
+    },
+    "ResContactUpdateResquestModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fullname": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "birthday": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "eventsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "organizationsObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Org"
+          }
+        },
+        "addressesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "telephonesObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "emailObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Email"
+          }
+        },
+        "websiteObject": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Website"
+          }
+        },
+        "notes": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "isShared": {
+          "type": "boolean"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "refsObject": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResCustomerGroup": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentGroup": {
+          "$ref": "#/definitions/ResCustomerGroup"
+        },
+        "name": {
+          "maxLength": 1024,
+          "minLength": 0,
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ResCustomerGroupPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResCustomerGroup"
+          }
+        }
+      }
+    },
+    "ResCustomerGroupRequestModel": {
+      "description": "The ResCustomerGroup request model.",
+      "type": "object",
+      "properties": {
+        "parentId": {
+          "format": "uuid",
+          "description": "The parent group.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The group name.",
+          "maxLength": 1024,
+          "type": "string"
+        },
+        "active": {
+          "description": "The flag defines group is active or not.",
+          "type": "boolean"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "ResCustomerGroupResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResCustomerGroup"
+        }
+      }
+    },
+    "ResCustomerGroupResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResCustomerGroupPagination"
+        }
+      }
+    },
+    "ResPartner": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "ref": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "refName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "tz": {
+          "type": "string"
+        },
+        "lang": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "languageName": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "vat": {
+          "maxLength": 20,
+          "minLength": 0,
+          "type": "string"
+        },
+        "website": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "comment": {
+          "maxLength": 400,
+          "minLength": 0,
+          "type": "string"
+        },
+        "creditLimit": {
+          "format": "float",
+          "type": "number"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "customer": {
+          "type": "boolean"
+        },
+        "supplier": {
+          "type": "boolean"
+        },
+        "employee": {
+          "type": "boolean"
+        },
+        "function": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "type": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "email": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "mobile": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "isCompany": {
+          "type": "boolean"
+        },
+        "industryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "color": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerShare": {
+          "type": "boolean"
+        },
+        "commercialPartnerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "commercialCompanyName": {
+          "type": "string"
+        },
+        "companyName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "messageMainAttachmentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "messageMainAttachmentPath": {
+          "type": "string"
+        },
+        "messageBounce": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "signupToken": {
+          "type": "string"
+        },
+        "signupType": {
+          "type": "string"
+        },
+        "signupExpiration": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "partnerGid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "additionalInfo": {
+          "type": "string"
+        },
+        "pickingWarn": {
+          "type": "string"
+        },
+        "pickingWarnMsg": {
+          "type": "string"
+        },
+        "teamId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "debitLimit": {
+          "format": "double",
+          "type": "number"
+        },
+        "lastTimeEntriesChecked": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "invoiceWarn": {
+          "type": "string"
+        },
+        "invoiceWarnMsg": {
+          "type": "string"
+        },
+        "saleWarn": {
+          "type": "string"
+        },
+        "saleWarnMsg": {
+          "type": "string"
+        },
+        "purchaseWarn": {
+          "type": "string"
+        },
+        "purchaseWarnMsg": {
+          "type": "string"
+        },
+        "calendarLastNotifAck": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "accountingObjectType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "websiteId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "fax": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "isSynchronized": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "countryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "countryCode": {
+          "maxLength": 5,
+          "minLength": 0,
+          "type": "string"
+        },
+        "countryName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "stateId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "province": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "provinceName": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "district": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "districtName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "ward": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "wardName": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "isSmallStreet": {
+          "type": "boolean"
+        },
+        "zip": {
+          "maxLength": 20,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "geoLocation": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "geoLocationImage": {
+          "type": "string"
+        },
+        "checkinDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "checkInAddress": {
+          "maxLength": 400,
+          "minLength": 0,
+          "type": "string"
+        },
+        "checkInStatus": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "checkInUserId": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "checkInUsername": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "confirmUserId": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "confirmUsername": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "c_left": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_right": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "labelsObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelsObj"
+          }
+        },
+        "labelsJson": {
+          "type": "string"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metadataContent": {
+          "type": "string"
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResPartnerPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResPartner"
+          }
+        }
+      }
+    },
+    "ResPartnerPatchResquestModel": {
+      "required": [
+        "code"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentName": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "refName": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "languageName": {
+          "type": "string"
+        },
+        "tz": {
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "vat": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "creditLimit": {
+          "format": "float",
+          "type": "number"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "customer": {
+          "type": "boolean"
+        },
+        "supplier": {
+          "type": "boolean"
+        },
+        "employee": {
+          "type": "boolean"
+        },
+        "function": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "countryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "countryCode": {
+          "maxLength": 5,
+          "type": "string"
+        },
+        "countryName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "stateId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "province": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "provinceName": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "district": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "districtName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "ward": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "wardName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "isSmallStreet": {
+          "type": "boolean"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "zip": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isCompany": {
+          "type": "boolean"
+        },
+        "industryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "color": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerShare": {
+          "type": "boolean"
+        },
+        "commercialPartnerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "commercialCompanyName": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "messageMainAttachmentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "messageMainAttachmentPath": {
+          "type": "string"
+        },
+        "messageBounce": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "signupToken": {
+          "type": "string"
+        },
+        "signupType": {
+          "type": "string"
+        },
+        "signupExpiration": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "partnerGid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "additionalInfo": {
+          "type": "string"
+        },
+        "pickingWarn": {
+          "type": "string"
+        },
+        "pickingWarnMsg": {
+          "type": "string"
+        },
+        "teamId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "debitLimit": {
+          "format": "double",
+          "type": "number"
+        },
+        "lastTimeEntriesChecked": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "invoiceWarn": {
+          "type": "string"
+        },
+        "invoiceWarnMsg": {
+          "type": "string"
+        },
+        "saleWarn": {
+          "type": "string"
+        },
+        "saleWarnMsg": {
+          "type": "string"
+        },
+        "purchaseWarn": {
+          "type": "string"
+        },
+        "purchaseWarnMsg": {
+          "type": "string"
+        },
+        "calendarLastNotifAck": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "accountingObjectType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "websiteId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "isSynchronized": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "listResContact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResContact"
+          }
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        }
+      }
+    },
+    "ResPartnerResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResPartner"
+          }
+        }
+      }
+    },
+    "ResPartnerResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResPartner"
+        }
+      }
+    },
+    "ResPartnerResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResPartnerPagination"
+        }
+      }
+    },
+    "ResPartnerResquestModel": {
+      "required": [
+        "code"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentName": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "refName": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "languageName": {
+          "type": "string"
+        },
+        "tz": {
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "vat": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "creditLimit": {
+          "format": "float",
+          "type": "number"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "customer": {
+          "type": "boolean"
+        },
+        "supplier": {
+          "type": "boolean"
+        },
+        "employee": {
+          "type": "boolean"
+        },
+        "function": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "countryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "countryCode": {
+          "maxLength": 5,
+          "type": "string"
+        },
+        "countryName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "stateId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "province": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "provinceName": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "district": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "districtName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "ward": {
+          "maxLength": 50,
+          "type": "string"
+        },
+        "wardName": {
+          "maxLength": 100,
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "isSmallStreet": {
+          "type": "boolean"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "zip": {
+          "maxLength": 20,
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isCompany": {
+          "type": "boolean"
+        },
+        "industryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "color": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerShare": {
+          "type": "boolean"
+        },
+        "commercialPartnerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "commercialCompanyName": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "messageMainAttachmentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "messageMainAttachmentPath": {
+          "type": "string"
+        },
+        "messageBounce": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "signupToken": {
+          "type": "string"
+        },
+        "signupType": {
+          "type": "string"
+        },
+        "signupExpiration": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "partnerGid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "additionalInfo": {
+          "type": "string"
+        },
+        "pickingWarn": {
+          "type": "string"
+        },
+        "pickingWarnMsg": {
+          "type": "string"
+        },
+        "teamId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "debitLimit": {
+          "format": "double",
+          "type": "number"
+        },
+        "lastTimeEntriesChecked": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "invoiceWarn": {
+          "type": "string"
+        },
+        "invoiceWarnMsg": {
+          "type": "string"
+        },
+        "saleWarn": {
+          "type": "string"
+        },
+        "saleWarnMsg": {
+          "type": "string"
+        },
+        "purchaseWarn": {
+          "type": "string"
+        },
+        "purchaseWarnMsg": {
+          "type": "string"
+        },
+        "calendarLastNotifAck": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "accountingObjectType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "websiteId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "isSynchronized": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "maxLength": 256,
+          "minLength": 0,
+          "type": "string"
+        },
+        "listResContact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResContact"
+          }
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ResPartnerViewModel": {
+      "type": "object",
+      "properties": {
+        "createdByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedByUserId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "lastModifiedOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdOnDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "companyId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "parentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "parentName": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "refName": {
+          "type": "string"
+        },
+        "tz": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "languageName": {
+          "type": "string"
+        },
+        "userId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "vat": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "creditLimit": {
+          "format": "float",
+          "type": "number"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "customer": {
+          "type": "boolean"
+        },
+        "supplier": {
+          "type": "boolean"
+        },
+        "employee": {
+          "type": "boolean"
+        },
+        "function": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "isCompany": {
+          "type": "boolean"
+        },
+        "industryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "color": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerShare": {
+          "type": "boolean"
+        },
+        "commercialPartnerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "commercialCompanyName": {
+          "type": "string"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "messageMainAttachmentId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "messageMainAttachmentPath": {
+          "type": "string"
+        },
+        "messageBounce": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "signupToken": {
+          "type": "string"
+        },
+        "signupType": {
+          "type": "string"
+        },
+        "signupExpiration": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "partnerGid": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "additionalInfo": {
+          "type": "string"
+        },
+        "pickingWarn": {
+          "type": "string"
+        },
+        "pickingWarnMsg": {
+          "type": "string"
+        },
+        "teamId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "debitLimit": {
+          "format": "double",
+          "type": "number"
+        },
+        "lastTimeEntriesChecked": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "invoiceWarn": {
+          "type": "string"
+        },
+        "invoiceWarnMsg": {
+          "type": "string"
+        },
+        "saleWarn": {
+          "type": "string"
+        },
+        "saleWarnMsg": {
+          "type": "string"
+        },
+        "purchaseWarn": {
+          "type": "string"
+        },
+        "purchaseWarnMsg": {
+          "type": "string"
+        },
+        "calendarLastNotifAck": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "accountingObjectType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "websiteId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "isSynchronized": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "countryId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        },
+        "stateId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "provinceName": {
+          "type": "string"
+        },
+        "district": {
+          "type": "string"
+        },
+        "districtName": {
+          "type": "string"
+        },
+        "ward": {
+          "type": "string"
+        },
+        "wardName": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "isSmallStreet": {
+          "type": "boolean"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "geoLocation": {
+          "type": "string"
+        },
+        "geoLocationImage": {
+          "type": "string"
+        },
+        "checkinDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "checkInAddress": {
+          "type": "string"
+        },
+        "checkInStatus": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "checkInUserId": {
+          "type": "string"
+        },
+        "checkInUsername": {
+          "type": "string"
+        },
+        "confirmUserId": {
+          "type": "string"
+        },
+        "confirmUsername": {
+          "type": "string"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "c_left": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_right": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "c_level": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "metadataContentObjs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataValue"
+          }
+        },
+        "metaContentType": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ResPartnerViewModelPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResPartnerViewModel"
+          }
+        }
+      }
+    },
+    "ResPartnerViewModelResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResPartnerViewModelPagination"
+        }
+      }
+    },
+    "ResponseDelete": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/ResponseDeleteModel"
+        }
+      }
+    },
+    "ResponseDeleteModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseDeleteMulti": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseDeleteModel"
+          }
+        }
+      }
+    },
+    "StatusEnums": {
+      "format": "int32",
+      "enum": [
+        0,
+        64
+      ],
+      "type": "integer"
+    },
+    "Website": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization: \"Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

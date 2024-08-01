@@ -1,0 +1,25 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - swaggers/**
+      - swaggers2/**
+      - swagger_file/**
+      - $package$
+    builders:
+      chopper_generator:
+        options:
+          header: "//Generated code"
+      swagger_dart_code_generator:
+        options:
+          input_folder: "swagger_file/"
+          output_folder: "lib/src/"
+          with_base_url: true
+          use_inheritance: false
+          enums_case_sensitive: false
+          separate_models: false
+          include_if_null: true
+          build_only_models: false
+          exclude_paths:
+            - "/v1/files/{id}/metadata" 
+ 

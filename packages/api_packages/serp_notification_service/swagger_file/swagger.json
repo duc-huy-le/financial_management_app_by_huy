@@ -1,0 +1,905 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "S-ERP Notification service",
+    "version": "v5.7.2"
+  },
+  "paths": {
+    "/v1/health/check": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "The health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/health/dbcheck": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "The database health check api.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/notifications": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Gets notification by owner.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "modules",
+            "description": "The list of modules.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The filter.",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Saves a notification.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The notification request model.",
+            "schema": {
+              "$ref": "#/definitions/NotificationRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/unread/count": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Gets notification by owner.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "modules",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Int64ResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/parent/{parentId}": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Gets notification by owner.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "parentId",
+            "description": "The parent id.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The filter.",
+            "type": "string",
+            "default": "{}"
+          },
+          {
+            "in": "path",
+            "name": "parentId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/owner/{ownerId}": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Gets notification by owner.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ownerId",
+            "description": "The owner id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The filter.",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/filter": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Filters the notification.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "The filter.",
+            "type": "string",
+            "default": "{}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponsePagination"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Filters the notification.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "The page size.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "currentPage",
+            "description": "The current page.",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The filter.",
+            "schema": {
+              "$ref": "#/definitions/NotificationQueryModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponsePagination"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/many-users": {
+      "post": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Saves a notification.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The list of notification request models.",
+            "schema": {
+              "$ref": "#/definitions/NotificationsRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponseList"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/{id}": {
+      "patch": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Patch update a notification.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The notification id.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The notification patch update request model.",
+            "schema": {
+              "$ref": "#/definitions/NotificationPatchUpdateRequestModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponseObject"
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/many": {
+      "patch": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Patch update a notification.",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "description": "The notification id.",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The notification patch update request models.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NotificationPatchUpdateRequestModel"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/NotificationEntityResponseList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Code": {
+      "format": "int32",
+      "enum": [
+        200,
+        201,
+        202,
+        204,
+        400,
+        401,
+        403,
+        404,
+        405,
+        500,
+        501,
+        502,
+        503
+      ],
+      "type": "integer"
+    },
+    "Int64ResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "NotificationEntity": {
+      "required": [
+        "applicationId"
+      ],
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/NotificationState"
+        },
+        "isSentToDevices": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "isRead": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "metadataContent": { },
+        "metaContentType": {
+          "type": "string"
+        },
+        "searchKeywords": {
+          "type": "string"
+        }
+      }
+    },
+    "NotificationEntityPagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPages": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "numberOfRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalRecords": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationEntity"
+          }
+        }
+      }
+    },
+    "NotificationEntityResponseList": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationEntity"
+          }
+        }
+      }
+    },
+    "NotificationEntityResponseObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/NotificationEntity"
+        }
+      }
+    },
+    "NotificationEntityResponsePagination": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        },
+        "totalTime": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/NotificationEntityPagination"
+        }
+      }
+    },
+    "NotificationPatchUpdateRequestModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isRead": {
+          "type": "boolean"
+        }
+      }
+    },
+    "NotificationQueryModel": {
+      "type": "object",
+      "properties": {
+        "sort": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        },
+        "currentPage": {
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "pageSize": {
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "filter": {
+          "type": "string"
+        },
+        "fullTextSearch": {
+          "type": "string"
+        },
+        "id": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "listId": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "searchAllApp": {
+          "type": "boolean"
+        },
+        "listTextSearch": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "objectId": {
+          "type": "string"
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "state": {
+          "$ref": "#/definitions/NotificationState"
+        },
+        "dateFrom": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateTo": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "NotificationRequestModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "ownerId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/NotificationState"
+        },
+        "isSentToDevices": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "objectId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "isRead": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "metadataContent": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NotificationState": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "type": "integer"
+    },
+    "NotificationsRequestModel": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "recievers": {
+          "type": "array",
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/NotificationState"
+        },
+        "isSentToDevices": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "objectId": {
+          "format": "uuid",
+          "type": "string"
+        },
+        "objectCode": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "isRead": {
+          "type": "boolean"
+        },
+        "metadataContent": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization: \"Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

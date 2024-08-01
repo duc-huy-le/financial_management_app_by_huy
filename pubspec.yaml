@@ -1,0 +1,46 @@
+name: saladleapp
+version: 1.0.0
+description: Financial Management App by Huy
+publish_to: "none"
+environment:
+  sdk: ">=2.17.5 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.15
+  provider: ^6.0.3
+  google_fonts: ^3.0.1
+  flutter_localizations:
+    sdk: flutter
+  saladle_ui_package:
+    path: ./packages/ui_packages/saladle_ui_package
+  saladle_ui_extend_package:
+    path: ./packages/ui_packages/saladle_ui_extend_package
+  serp_auth_service:
+    path: ./packages/api_packages/serp_auth_service
+  serp_base_service:
+    path: ./packages/api_packages/serp_base_service
+  serp_notification_service:
+    path: ./packages/api_packages/serp_notification_service
+  serp_user_service:
+    path: ./packages/api_packages/serp_user_service
+  serp_tree_service:
+    path: ./packages/api_packages/serp_tree_service
+  serp_http_service:
+    path: ./packages/api_packages/serp_http_service
+  serp_service_utils:
+    path: ./packages/api_packages/serp_service_utils
+  flutter_mentions: ^2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/images/
+  uses-material-design: true
